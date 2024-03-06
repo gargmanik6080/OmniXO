@@ -7,7 +7,7 @@ const BoardComp = ({ squares, onMarkClick }) => {
   };
 
   return (
-    <div className="board-container border border-b-lg border-white bg-white">
+    <div className="board-container border-white">
       <div className="board-row ">
         {renderSquare(0)}
         {renderSquare(1)}
@@ -26,5 +26,11 @@ const BoardComp = ({ squares, onMarkClick }) => {
     </div>
   );
 }
+
+import PropTypes from 'prop-types';
+BoardComp.propTypes = {
+  squares: PropTypes.array.isRequired,
+  onMarkClick: PropTypes.func.isRequired
+};
 
 export default BoardComp;
