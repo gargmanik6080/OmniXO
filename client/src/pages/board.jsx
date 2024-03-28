@@ -44,7 +44,8 @@ const Board = () => {
 		// console.log("Player changed")
 		if (currPlayer === botMark && currPlayer != "") {
 			setStatusText("Thinking..."); // bot move
-			const getBotMove = async () => {
+			// getting board after bot move
+			const getNewBoard = async () => {
 				return await fetch("http://127.0.0.1:5000/move", {
 					method: "POST",
 					headers: {
@@ -53,21 +54,27 @@ const Board = () => {
 					},
 					body: JSON.stringify({
 						board: currBoard,
+						player: botMark,
 					}),
 				})
 					.then((res) => {
 						return res.json();
 					})
-					.then((data) => {
-						return data.move;
-					});
+					// .then((data) => {
+					// 	return data.newBoard;
+					// });
 			};
 
-			getBotMove().then((move) => {
-				console.log("Bot Move: " + move);
-				let newBoard = [...currBoard];
-				newBoard[move] = botMark;
-				setCurrBoard(newBoard);
+			getNewBoard().then((data) => {
+				// console.log("Bot Move: " + move);
+				// let newBoard = [...currBoard];
+				// newBoard[move] = botMark;
+				console.log(data.winner);
+				setCurrBoard(data.newBoard);
+				if(data.winner != "null"){
+					setStatusText(data.winner + " Won!!!");
+					return;
+				}
                 setCurrPlayer(botMark == "X" ? "O" : "X")
 			});
 		} else {

@@ -85,3 +85,22 @@ button:focus-visible {
 body {
 	background: #000;
 }
+
+.play-container {
+  display: flex; /* Center the button horizontally */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Fill the viewport height */
+  background-color: black;
+}
+
+.play-button {
+  color: white;
+  font-size: 3rem; /* Adjust font size as desired */
+  text-decoration: none; /* Remove default link underline */
+  padding: 1rem 2rem; /* Add some padding around the text */
+  border: none; /* Remove default border from button */
+  background-color: transparent; /* Transparent background */
+  cursor: pointer; /* Indicate clickable behavior */
+  border-radius: 5px; /* Add rounded corners */
+}
