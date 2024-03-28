@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from util import hasWinner
+from util import *
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -14,18 +14,21 @@ def index():
 def make_move():
     board = request.json.get('board')
     mark = request.json.get('player')
+    getMove(board, mark)
     # Checking if the user has won
-    if hasWinner(board):
-        return jsonify({'newBoard': board, "winner": "You"})
+    winner = hasWinner(board)
+    if winner != "None":
+        return jsonify({'newBoard': board, "winner": winner})
     
     for i,cell in enumerate(board):
         if not cell :
             board[i] = mark
-            if hasWinner(board):
-                return jsonify({'newBoard': board, "winner": "Bot"})
+            win = hasWinner(board)
+            if winner != "None":
+                return jsonify({'newBoard': board, "winner": winner})
             else:
-                return jsonify({'newBoard': board, "winner": "null"})
-    return jsonify({'move': 'null'})
+                return jsonify({'newBoard': board, "winner": "None"})
+    return jsonify({'move': 'null', "winner":"Draw"})
 
 
 app.run(debug=True)

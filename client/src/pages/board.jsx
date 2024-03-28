@@ -71,7 +71,7 @@ const Board = () => {
 				// newBoard[move] = botMark;
 				console.log(data.winner);
 				setCurrBoard(data.newBoard);
-				if(data.winner != "null"){
+				if(data.winner != "None"){
 					setStatusText(data.winner + " Won!!!");
 					return;
 				}
