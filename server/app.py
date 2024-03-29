@@ -32,4 +32,4 @@ def make_move():
 
 # Running the Flask app
 
-app.run(debug=True)
+app.run()
