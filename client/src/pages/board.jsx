@@ -49,7 +49,7 @@ const Board = () => {
 			setStatusText("Thinking..."); // bot move
 			// getting board after bot move
 			const getNewBoard = async () => {
-				return await fetch("http://127.0.0.1:5000/move", {
+				return await fetch("https://omnixo-server.onrender.com/move", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
