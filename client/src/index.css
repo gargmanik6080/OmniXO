@@ -83,7 +83,7 @@ button:focus-visible {
 }
 
 body {
-	background: #000;
+	background: #2d2d38;
 }
 
 .play-container {
@@ -91,7 +91,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Fill the viewport height */
-  background-color: black;
+  background-color: #2d2d38;
 }
 
 .play-button {
@@ -104,3 +104,7 @@ body {
   cursor: pointer; /* Indicate clickable behavior */
   border-radius: 5px; /* Add rounded corners */
 }
+
+/* .play-again {
+  bg-gray-8
+} */

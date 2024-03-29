@@ -1,6 +1,6 @@
 const Marks = ({ value, markInput }) => {
     return (
-      <button className="square text-lg w-12 bg-black mb-5 mr-3" onClick={markInput}>
+      <button className="square text-2xl w-12 bg-[#2d2d38] mb-5 mr-3 font-medium" onClick={markInput}>
         {value === null ? "." : value}
       </button>
     );

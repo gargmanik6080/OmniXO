@@ -14,21 +14,22 @@ def index():
 def make_move():
     board = request.json.get('board')
     mark = request.json.get('player')
-    getMove(board, mark)
     # Checking if the user has won
     winner = hasWinner(board)
     if winner != "None":
         return jsonify({'newBoard': board, "winner": winner})
     
-    for i,cell in enumerate(board):
-        if not cell :
-            board[i] = mark
-            win = hasWinner(board)
-            if winner != "None":
-                return jsonify({'newBoard': board, "winner": winner})
-            else:
-                return jsonify({'newBoard': board, "winner": "None"})
-    return jsonify({'move': 'null', "winner":"Draw"})
+    move = getMove(board, mark)
+    print("Move " , move)
+    board[move] = mark
+    winner = hasWinner(board)
+    if winner == "Draw":
+        return jsonify({'newBoard': board, "winner": "Draw"})
+    elif winner != "None":
+        return jsonify({'newBoard': board, "winner": winner})
+    return jsonify({'newBoard': board, "winner": "None"})
 
+
+# Running the Flask app
 
 app.run(debug=True)
