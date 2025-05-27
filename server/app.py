@@ -1,6 +1,11 @@
+import sys
 from flask import Flask, jsonify, request
 from util import *
 from flask_cors import CORS
+from waitress import serve
+
+# Force immediate output flushing
+sys.stdout.reconfigure(line_buffering=True)
 
 app = Flask(__name__)
 CORS(app)
@@ -31,5 +36,10 @@ def make_move():
 
 
 # Running the Flask app
-
-app.run(host='0.0.0.0', port=80)
+if __name__ == '__main__':
+    # Print before starting the server
+    print(f"Starting server on port 80 of the container...")
+    try:
+        serve(app, host='0.0.0.0', port=80)
+    except KeyboardInterrupt:
+        print("\nServer stopped")
