@@ -49,12 +49,10 @@ const Board = () => {
 			setStatusText("Thinking..."); // bot move
 			// getting board after bot move
 			const getNewBoard = async () => {
-				return await fetch("https://omnixo-server.onrender.com/move", {
+				return await fetch("/api/move", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						"Access-Control-Allow-Origin": "*",
-
 					},
 					body: JSON.stringify({
 						board: currBoard,
