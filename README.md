@@ -42,6 +42,19 @@ cd server
 docker build -t omnixo-server:latest .
 ```
 
+### Building Multi-Platform Images
+For production deployment on different architectures (AMD64/ARM64):
+
+```bash
+# Server - multi-platform build and push
+cd server
+docker buildx build --platform linux/amd64,linux/arm64 -t gargmanik6080/server:latest --push .
+
+# Client - multi-platform build and push  
+cd client
+docker buildx build --platform linux/amd64,linux/arm64 -t gargmanik6080/client:latest --push .
+```
+
 ### Building the Client
 ```bash
 cd client
