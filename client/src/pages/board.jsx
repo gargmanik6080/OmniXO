@@ -49,6 +49,7 @@ const Board = () => {
 			setStatusText("Thinking..."); // bot move
 			// getting board after bot move
 			const getNewBoard = async () => {
+				
 				return await fetch("/api/move", {
 					method: "POST",
 					headers: {

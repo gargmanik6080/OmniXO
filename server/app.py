@@ -9,6 +9,12 @@ sys.stdout.reconfigure(line_buffering=True)
 
 app = Flask(__name__)
 CORS(app)
+
+# Log all incoming requests
+@app.before_request
+def log_request():
+    print(f"Incoming request: {request.method} {request.url}")
+
 # Defining a route for the root endpoint
 @app.route('/')
 def index():
