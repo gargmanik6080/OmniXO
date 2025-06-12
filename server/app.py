@@ -41,6 +41,10 @@ def make_move():
     return jsonify({'newBoard': board, "winner": "None"})
 
 
+@app.route('/api/move', methods=['POST'])
+def api_move():
+    return make_move()  # Call the same function
+
 # Running the Flask app
 if __name__ == '__main__':
     # Print before starting the server
